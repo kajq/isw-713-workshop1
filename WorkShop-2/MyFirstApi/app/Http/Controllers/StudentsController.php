@@ -34,7 +34,14 @@ class StudentsController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        //instanciamos la clase
+        $student = new Student;
+        //declaramos el nombre enviado en el request
+        $student->firstname = $request->firstname;
+        $student->lastname = $request->lastname;
+        $student->email = $request->email;
+        $student->address = $request->address;
+        $student->save();
     }
 
     /**
@@ -45,7 +52,8 @@ class StudentsController extends Controller
      */
     public function show($id)
     {
-        //
+        //Solicitamos al modelo el Pokemon con el id solicitado por GET.
+        return Student::where('id', $id)->get();
     }
 
     /**
